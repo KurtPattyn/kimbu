@@ -12,7 +12,7 @@
 
 ##### Author: [Kurt Pattyn](https://github.com/kurtpattyn).
 
-Kimmy is a message bus framework that implements the publish-subscribe and request-response messaging patterns.
+Kimmy is a message bus framework that implements publish-subscribe and request-response messaging patterns.
 It abstracts away from the underlying message transport by using pluggable messaging transport providers.
 Currently, only a RabbitMQ messaging transport provider has been implemented.
 
