@@ -19,7 +19,8 @@ deploy:
     branch: master
 addons:
     code_climate:
-        repo_token: 63c299aabdaa62fc909029f917b03b30b706ba528d58d9847106e100df969323
+        repo_token:
+          secure: "CbvyP5ZC5YGU3ez8j+WZw5GkGzwPiZLlZb8/3QNQ7GgAmQtTxjB+jdCU8wJnLRnoIiwwNj7Qs5La4DPKp+kYSnaOugwlzCi0a8rg0uDIk0ZV6wCWOX4CYMdcX0giAW28+MzNObbe01Uo+WN9oefSm+Oh1ywc/HuNr+hsEy1nzMDHEFadqmrbgILfQfHOYuWlTl+IXrWYokSOrfcADMO25pNfvuJ2cSoIoe+t9+qDja+XI1E0FYiulAp7vuW6b320x2Ms/PPb2T+ojr2agfg+yr/9nHrJkrHQQhlSAoeNMtZmNUYM6rMOh+Z8p6uME6ZXDApSje5mzxL57a6QgL+qlZqT6LwHqrMLJTnwH1+eXLRaVYuQwgqzFUDjFsNQN5oIZsnKWWQVAbQX/LNMNJB0sxi2qg6eI1Cz4mLE9Y6kgxx1pLcra5FVHA9PlkxrUm3qwfhaVWa7Fu1vMaksxG0OlPzReHxW8BB3IMNjgthCgpchtq5xIFOzFwCV4aKzxLesKX8/ZTNns5p3bSGCOABMgWopNpXGMgftdjkwdgfF/68si1+fjx4wdDSyKW4BIznUBbjM3SdUENib4HhrcKd5Skya4txcBdpc4DvDPz4YCBqxzFdkgltLQuh8/ZKZTr0AQvCj0P2rIXOnMBelxHmIScMhLAPmEDoPZtc0jgr1d2w="
 before_script:
   - npm run check-style
   - npm run code-analysis
