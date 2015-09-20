@@ -1,4 +1,4 @@
-# james
+# kimmy
   [![License][license-image]][license-url]
   [![NPM Package][npm-image]][npm-url]
   [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
@@ -12,7 +12,7 @@
 
 ##### Author: [Kurt Pattyn](https://github.com/kurtpattyn).
 
-James is a message bus framework that implements the publish-subscribe and request-response messaging patterns.
+Kimmy is a message bus framework that implements the publish-subscribe and request-response messaging patterns.
 It abstracts away from the underlying message transport by using pluggable messaging transport providers.
 Currently, only a RabbitMQ messaging transport provider has been implemented.
 
@@ -29,20 +29,20 @@ Although not difficult, this requires a lot of boilerplate code.
 ## Installation
 
 ```bashp
-$ npm install james
+$ npm install kimmy
 ```
 
 or
 
 ```bashp
-$ npm install james --production
+$ npm install kimmy --production
 ```
 for a production only installation (no tests, documentation, ...).
 
 ## Usage
 ``` js
-  var MessageBusClient = require("james").MessageBusClient;
-  var MessageBusTransport = require("james").MessageBusTransport;
+  var MessageBusClient = require("kimmy").MessageBusClient;
+  var MessageBusTransport = require("kimmy").MessageBusTransport;
   var RabbitMQTransport = MessageBusTransport.transports.RabbitMQTransport;
 
   var rmq = new RabbitMQTransport();  //use default options
@@ -127,21 +127,21 @@ will run `jsdoc` to create documentation.
 
   [MIT](LICENSE)
 
-[npm-image]: https://badge.fury.io/js/james.svg
-[npm-url]: https://www.npmjs.com/package/james
-[npm-downloads-image]: https://img.shields.io/npm/dm/james.svg?style=flat
-[npm-downloads-url]: https://www.npmjs.org/package/james
-[coveralls-image]: https://coveralls.io/repos/KurtPattyn/james/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/KurtPattyn/james?branch=master
-[travis-image]: https://travis-ci.org/KurtPattyn/james.svg?branch=master
-[travis-url]: https://travis-ci.org/KurtPattyn/james
-[codeclimate-image]: https://codeclimate.com/github/KurtPattyn/james/badges/gpa.svg
-[codeclimate-url]: https://codeclimate.com/github/KurtPattyn/james
-[david-image]: https://david-dm.org/kurtpattyn/james.svg
-[david-url]: https://david-dm.org/kurtpattyn/james
-[david-dev-image]: https://david-dm.org/kurtpattyn/james/dev-status.svg
-[david-dev-url]: https://david-dm.org/kurtpattyn/james#info=devDependencies
+[npm-image]: https://badge.fury.io/js/kimmy.svg
+[npm-url]: https://www.npmjs.com/package/kimmy
+[npm-downloads-image]: https://img.shields.io/npm/dm/kimmy.svg?style=flat
+[npm-downloads-url]: https://www.npmjs.org/package/kimmy
+[coveralls-image]: https://coveralls.io/repos/KurtPattyn/kimmy/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/KurtPattyn/kimmy?branch=master
+[travis-image]: https://travis-ci.org/KurtPattyn/kimmy.svg?branch=master
+[travis-url]: https://travis-ci.org/KurtPattyn/kimmy
+[codeclimate-image]: https://codeclimate.com/github/KurtPattyn/kimmy/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/KurtPattyn/kimmy
+[david-image]: https://david-dm.org/kurtpattyn/kimmy.svg
+[david-url]: https://david-dm.org/kurtpattyn/kimmy
+[david-dev-image]: https://david-dm.org/kurtpattyn/kimmy/dev-status.svg
+[david-dev-url]: https://david-dm.org/kurtpattyn/kimmy#info=devDependencies
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
-[waffle-image]: https://badge.waffle.io/KurtPattyn/james.svg?label=ready&title=Ready
-[waffle-url]: http://waffle.io/KurtPattyn/james
+[waffle-image]: https://badge.waffle.io/KurtPattyn/kimmy.svg?label=ready&title=Ready
+[waffle-url]: http://waffle.io/KurtPattyn/kimmy
