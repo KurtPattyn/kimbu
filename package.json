@@ -1,0 +1,47 @@
+{
+  "name": "james",
+  "version": "0.0.1",
+  "description": "Message bus providing pub/sub and req/res style of messaging over pluggable transports.",
+  "main": "./index.js",
+  "dependencies": {
+    "amqplib": "^0.3.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.19",
+    "jscs": "^2.1.1",
+    "jsdoc": "^3.3.2",
+    "jshint": "^2.8.0",
+    "minami": "^1.1.1",
+    "mocha": "^2.3.0"
+  },
+  "keywords": [
+    "messagebus",
+    "amqp",
+    "servicebus"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KurtPattyn/james.git"
+  },
+  "engines": [
+    "node >=0.11.0"
+  ],
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha --bail --reporter spec --check-leaks test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter spec --check-leaks test/",
+    "test-ci": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
+    "benchmark": "node benchmarks/benchmark",
+    "make-docs": "./node_modules/.bin/jsdoc -c jsdoc.conf",
+    "check-style": "./node_modules/jscs/bin/jscs .",
+    "code-analysis": "./node_modules/jshint/bin/jshint ."
+  },
+  "author": {
+    "name": "Kurt Pattyn",
+    "email": "pattyn.kurt@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KurtPattyn/james/issues"
+  },
+  "homepage": "https://github.com/KurtPattyn/james"
+}
