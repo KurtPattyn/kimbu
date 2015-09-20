@@ -1,9 +1,13 @@
 language: node_js
 node_js:
-- stable
-- '0.12'
-- '0.11'
+  - stable
+  - '0.12'
+  - '0.11'
 sudo: false
+branches:
+  only:
+    - master
+    - develop
 deploy:
   provider: npm
   email: pattyn.kurt@gmail.com
@@ -14,12 +18,12 @@ deploy:
     repo: KurtPattyn/kimmy
     branch: master
 addons:
-  code_climate:
-    repo_token: a5b7451aa9dd5b54e35a08f783e89ccca7a32b9d3ef953f61686bbcea997ed89
+    code_climate:
+        repo_token: 63c299aabdaa62fc909029f917b03b30b706ba528d58d9847106e100df969323
 before_script:
-- npm run check-style
-- npm run code-analysis
+  - npm run check-style
+  - npm run code-analysis
 script: npm run test-ci
 after_success:
-- npm install coveralls && cat ./coverage/lcov.info | coveralls
-- npm install codeclimate-test-reporter && codeclimate-test-reporter < ./coverage/lcov.info
+  - npm install coveralls && cat ./coverage/lcov.info | coveralls
+  - npm install codeclimate-test-reporter && codeclimate-test-reporter < ./coverage/lcov.info
