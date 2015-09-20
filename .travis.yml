@@ -4,10 +4,6 @@ node_js:
   - '0.12'
   - '0.11'
 sudo: false
-branches:
-  only:
-    - master
-    - develop
 deploy:
   provider: npm
   email: pattyn.kurt@gmail.com
