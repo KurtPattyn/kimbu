@@ -112,10 +112,16 @@ describe("Channel", function() {
 
         rmq.connect(function(err) {
           assert(util.isNullOrUndefined(err));
-          channel.start(function(err) {
+
+          //create the consume queue first
+          rmq.consumeChannel(recipientName, distributorName, function (err, ch) {
             assert(util.isNullOrUndefined(err));
-            rmq.disconnect();
-            done();
+            assert(!util.isNullOrUndefined(ch));
+            channel.start(function (err) {
+              assert(util.isNullOrUndefined(err));
+              rmq.disconnect();
+              done();
+            });
           });
         });
       });
@@ -279,10 +285,13 @@ describe("Channel", function() {
 
         rmq.connect(function(err) {
           assert(util.isNullOrUndefined(err));
-          channel.start(function (err) {
+          rmq.dispatchChannel(distributorName, function(err, channel) {
             assert(util.isNullOrUndefined(err));
-            rmq.disconnect();
-            done();
+            channel.start(function (err) {
+              assert(util.isNullOrUndefined(err));
+              rmq.disconnect();
+              done();
+            });
           });
         });
       });
