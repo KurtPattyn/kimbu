@@ -1,3 +1,7 @@
 node_modules
 coverage
 .idea
+docs
+npm-debug.log
+.DS_Store
+/*.env

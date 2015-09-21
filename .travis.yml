@@ -4,24 +4,25 @@ node_js:
   - '0.12'
   - '0.11'
 sudo: false
+services:
+   - rabbitmq
 deploy:
   provider: npm
   email: pattyn.kurt@gmail.com
   api_key:
-    secure: hwQZy8NQ1zYoMRb8Z4WEjuNh9+kRgLQqrRK8QW6tb/D8u7+f0F7dH72j/BrH/gRZtmN/DH0D87gSQCNL3Qs9p6mpQgzsap5D/g69l9JDGRXisL/MjHpPJqYlBI9x55V7G/vNPihmhzvmO8tGi/hPGOnXw6oBJYPJEG3DmCvpgwnBxiLsa9Xioqbb1vEUIgFgDnSdFUFzcw8uNZtsto0m+F5kM4jyJ7hYslPYd9IRAE0TLHe4OetWaBX3yvhgsOj9xPHGpjtVkDJbeMBhmRT7CmWBalOPizsgC29PXISVOIMXJICBVYwspGrn38hU4cELwr9n1NzpmN0o0DVAJoE+ONDwex7Lx9fXcmQmhNVU9b75evKXzHoyWDmMmoHC0Flj9jkJ6ZqfDnhw4NFJBb8dXVmet78v5hscEawm1zKZ+mlNqJJK7ocEMPegUlBz+zs3PHEttKWiyzIg6c3klY9YeZEZFGQrl6C3270pLzbOzmm4Y6MsKpFPceK13+z42CZxzp4xlRUCLCrvYUPU7wz5lvToZyO/fOVilEdY4nMTKhmBrJPJkxxjb3EK77G5jbwhhMFKvcrCzTWf006LTUyuWvIBoeeRqe6xi/oYQ/FQzLD0hPQn39o14lWQhOvdTNfqSrqAUqcouei8xpwIzun2VFIe6f4IiMsw6ankPPCGfYE=
+    secure: c9vnMtJPya3umtms38gn5vUiSVVs0T2LgIDhul607DKRxVAp4MWL59E6Nr/usGWu9VfSkND2rFXjcTqkfKMOot62/x6TWFkbaTVb7AGm8u6W2IJmIzk5ZEkdv+EReuoGEcvFJ1Umi75E8YafiolfaEB3fv8w+YP0lr/Sb2aMudvj2hC3ky5SfbWCEgzIBSPO8PTcgR9YPKV7chQzLguqTOOm0PPzURkvDfiUiIW58OXnG9z1A1BITOnM4sfwG5J74TdmYnRrXlT8vjRO9628EV6jiQLJMa46l+32go10E5dlAK4vAaJdRoxep4tO8ebArzxm4gWchGrkH7aD9EYZNPo59D8VEc1VJD8yE86WaPiSBmckM5Uq9AG15hVQGYCYmpMIPZIwn/k2JUmkfJ1GOlPCL724cMNrjs8b7pxbdcuEjjVAtct1/zCfWeMJnPzwp3qwKur3ipt3CiUyREO9iw8Y5srwuGUASui6AGyRTlk5ZN9BU9/hk21XcmbQ40byewHzJTwpi/Fe/FnCUukxU7kKqnkCDs0oHhhl48YloKXxe+/kwFGbY6iQN+Mh6G7OQgXR4fMEEc2n96xAOs9y8fWoOwsgd2SnqgqMlAo135eB58yZlRbxa75dMTgTWB8nnuC3od6iofi74svqzJ+HlOjXYXkg8LW8jnR9IrDDtsk=
   on:
     tags: true
-    repo: KurtPattyn/james
+    repo: KurtPattyn/kimmy
     branch: master
-
 addons:
-  code_climate:
-    repo_token: a5b7451aa9dd5b54e35a08f783e89ccca7a32b9d3ef953f61686bbcea997ed89
-
+    code_climate:
+        repo_token:
+          secure: "CbvyP5ZC5YGU3ez8j+WZw5GkGzwPiZLlZb8/3QNQ7GgAmQtTxjB+jdCU8wJnLRnoIiwwNj7Qs5La4DPKp+kYSnaOugwlzCi0a8rg0uDIk0ZV6wCWOX4CYMdcX0giAW28+MzNObbe01Uo+WN9oefSm+Oh1ywc/HuNr+hsEy1nzMDHEFadqmrbgILfQfHOYuWlTl+IXrWYokSOrfcADMO25pNfvuJ2cSoIoe+t9+qDja+XI1E0FYiulAp7vuW6b320x2Ms/PPb2T+ojr2agfg+yr/9nHrJkrHQQhlSAoeNMtZmNUYM6rMOh+Z8p6uME6ZXDApSje5mzxL57a6QgL+qlZqT6LwHqrMLJTnwH1+eXLRaVYuQwgqzFUDjFsNQN5oIZsnKWWQVAbQX/LNMNJB0sxi2qg6eI1Cz4mLE9Y6kgxx1pLcra5FVHA9PlkxrUm3qwfhaVWa7Fu1vMaksxG0OlPzReHxW8BB3IMNjgthCgpchtq5xIFOzFwCV4aKzxLesKX8/ZTNns5p3bSGCOABMgWopNpXGMgftdjkwdgfF/68si1+fjx4wdDSyKW4BIznUBbjM3SdUENib4HhrcKd5Skya4txcBdpc4DvDPz4YCBqxzFdkgltLQuh8/ZKZTr0AQvCj0P2rIXOnMBelxHmIScMhLAPmEDoPZtc0jgr1d2w="
 before_script:
-  - "npm run check-style"
-  - "npm run code-analysis"
-script: "npm run test-ci"
+  - npm run check-style
+  - npm run code-analysis
+script: npm run test-ci
 after_success:
-  - "npm install coveralls && cat ./coverage/lcov.info | coveralls"
-  - "npm install codeclimate-test-reporter && codeclimate-test-reporter < ./coverage/lcov.info"
+  - npm install coveralls && cat ./coverage/lcov.info | coveralls
+  - npm install codeclimate-test-reporter && codeclimate-test-reporter < ./coverage/lcov.info
