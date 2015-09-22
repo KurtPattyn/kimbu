@@ -13,7 +13,7 @@ deploy:
     secure: c9vnMtJPya3umtms38gn5vUiSVVs0T2LgIDhul607DKRxVAp4MWL59E6Nr/usGWu9VfSkND2rFXjcTqkfKMOot62/x6TWFkbaTVb7AGm8u6W2IJmIzk5ZEkdv+EReuoGEcvFJ1Umi75E8YafiolfaEB3fv8w+YP0lr/Sb2aMudvj2hC3ky5SfbWCEgzIBSPO8PTcgR9YPKV7chQzLguqTOOm0PPzURkvDfiUiIW58OXnG9z1A1BITOnM4sfwG5J74TdmYnRrXlT8vjRO9628EV6jiQLJMa46l+32go10E5dlAK4vAaJdRoxep4tO8ebArzxm4gWchGrkH7aD9EYZNPo59D8VEc1VJD8yE86WaPiSBmckM5Uq9AG15hVQGYCYmpMIPZIwn/k2JUmkfJ1GOlPCL724cMNrjs8b7pxbdcuEjjVAtct1/zCfWeMJnPzwp3qwKur3ipt3CiUyREO9iw8Y5srwuGUASui6AGyRTlk5ZN9BU9/hk21XcmbQ40byewHzJTwpi/Fe/FnCUukxU7kKqnkCDs0oHhhl48YloKXxe+/kwFGbY6iQN+Mh6G7OQgXR4fMEEc2n96xAOs9y8fWoOwsgd2SnqgqMlAo135eB58yZlRbxa75dMTgTWB8nnuC3od6iofi74svqzJ+HlOjXYXkg8LW8jnR9IrDDtsk=
   on:
     tags: true
-    repo: KurtPattyn/kimmy
+    repo: KurtPattyn/kimbu
     branch: master
 addons:
     code_climate:
