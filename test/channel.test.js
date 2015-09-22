@@ -184,6 +184,37 @@ describe("Channel", function() {
           assert(util.isNullOrUndefined(err));
         });
       });
+
+      it("should not receive messages with the given name if the channel is stopped", function(done) {
+        var msgToSend = "Some Message!";
+        var msgName = "some.test.message";
+
+        channel.on(msgName, function(parameters, next) {
+          next();
+          channel.off(msgName);
+          assert(false, "Should not be called");
+        });
+        rmq.consumeChannel("dummyRecipient", "testChannel", function (err, ch) {
+          assert(util.isNullOrUndefined(err));
+          assert(!util.isNullOrUndefined(ch));
+
+          var dummyChannel = new ConsumeChannel("dummyRecipient", "testChannel", rmq);
+          dummyChannel.start(function (err) {
+            assert(util.isNullOrUndefined(err));
+
+            channel.stop(function (err) {
+              assert(util.isNullOrUndefined(err));
+              dummyChannel._consumeQueue.publish(new Message(msgName, msgToSend, {type: "event"}), function (err) {
+                assert(util.isNullOrUndefined(err));
+                setTimeout(function () {
+                  channel.off(msgName);
+                  done();
+                }, 0);
+              });
+            });
+          });
+        });
+      });
     });
   });
 
@@ -464,10 +495,22 @@ describe("Channel", function() {
 
       it("should throw an assertion failure with an invalid callback", function(done) {
         assert.throws(function() {
-            dispatchChannel.publish("some.command", {}, {}, "invalidcallback");
+            dispatchChannel.request("some.command", {}, {}, "invalidcallback");
           }, /AssertionError/,
           "Should throw an AssertionError");
         done();
+      });
+
+      it("should return an error when the channel is stopped", function(done) {
+        dispatchChannel.stop(function(err) {
+          assert(util.isNullOrUndefined(err));
+          dispatchChannel.request("some.command", "payload", {}, function(err, reply) {
+            assert(!util.isNullOrUndefined(err));
+            assert(util.isNullOrUndefined(reply));
+            assert.equal(err.message, "Publishing is stopped.");
+            done();
+          });
+        });
       });
     });
   });
