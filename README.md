@@ -41,12 +41,12 @@ for a production only installation (no tests, documentation, ...).
 
 ## Usage
 ``` js
-  var MessageBusClient = require("kimbu").MessageBusClient;
-  var MessageBusTransport = require("kimbu").MessageBusTransport;
-  var RabbitMQTransport = MessageBusTransport.transports.RabbitMQTransport;
+  var Client = require("kimbu").Client;
+  var Transport = require("kimbu").Transport;
+  var RabbitMQTransport = Transport.providers.RabbitMQTransport;
 
   var rmq = new RabbitMQTransport();  //use default options
-  var client = new MessageBusClient("client1", rmq, function(err) {
+  var client = new Client("client1", rmq, function(err) {
     client.on("calculator.add", function(parameters, next) {
       var result = parameters.reduce(function(prevVal, curVal) {
         return prevVal + curVal;
