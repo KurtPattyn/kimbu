@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = require("./lib/messagebus");
+module.exports = require("./lib/messagebusclient");
