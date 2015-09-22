@@ -1,5 +1,5 @@
 {
-  "name": "kimmy",
+  "name": "kimbu",
   "version": "0.1.2",
   "description": "Message bus providing pub/sub and req/res style of messaging over pluggable transports.",
   "main": "./index.js",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/KurtPattyn/kimmy.git"
+    "url": "https://github.com/KurtPattyn/kimbu.git"
   },
   "engines": [
     "node >=0.11.0"
@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KurtPattyn/kimmy/issues"
+    "url": "https://github.com/KurtPattyn/kimbu/issues"
   },
-  "homepage": "https://github.com/KurtPattyn/kimmy"
+  "homepage": "https://github.com/KurtPattyn/kimbu"
 }

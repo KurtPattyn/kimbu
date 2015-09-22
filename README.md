@@ -1,4 +1,4 @@
-# kimmy
+# kimbu
   [![License][license-image]][license-url]
   [![NPM Package][npm-image]][npm-url]
   [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
@@ -12,7 +12,7 @@
 
 ##### Author: [Kurt Pattyn](https://github.com/kurtpattyn).
 
-Kimmy is a message bus framework that implements publish-subscribe and request-response messaging patterns.
+Kimbu is a message bus framework that implements publish-subscribe and request-response messaging patterns.
 It abstracts away from the underlying message transport by using pluggable messaging transport providers.
 Currently, only a RabbitMQ messaging transport provider has been implemented.
 
@@ -29,20 +29,20 @@ Although not difficult, this requires a lot of boilerplate code.
 ## Installation
 
 ```bashp
-$ npm install kimmy
+$ npm install kimbu
 ```
 
 or
 
 ```bashp
-$ npm install kimmy --production
+$ npm install kimbu --production
 ```
 for a production only installation (no tests, documentation, ...).
 
 ## Usage
 ``` js
-  var MessageBusClient = require("kimmy").MessageBusClient;
-  var MessageBusTransport = require("kimmy").MessageBusTransport;
+  var MessageBusClient = require("kimbu").MessageBusClient;
+  var MessageBusTransport = require("kimbu").MessageBusTransport;
   var RabbitMQTransport = MessageBusTransport.transports.RabbitMQTransport;
 
   var rmq = new RabbitMQTransport();  //use default options
@@ -127,21 +127,21 @@ will run `jsdoc` to create documentation.
 
   [MIT](LICENSE)
 
-[npm-image]: https://badge.fury.io/js/kimmy.svg
-[npm-url]: https://www.npmjs.com/package/kimmy
-[npm-downloads-image]: https://img.shields.io/npm/dm/kimmy.svg?style=flat
-[npm-downloads-url]: https://www.npmjs.org/package/kimmy
-[coveralls-image]: https://coveralls.io/repos/KurtPattyn/kimmy/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/KurtPattyn/kimmy?branch=master
-[travis-image]: https://travis-ci.org/KurtPattyn/kimmy.svg?branch=master
-[travis-url]: https://travis-ci.org/KurtPattyn/kimmy
-[codeclimate-image]: https://codeclimate.com/github/KurtPattyn/kimmy/badges/gpa.svg
-[codeclimate-url]: https://codeclimate.com/github/KurtPattyn/kimmy
-[david-image]: https://david-dm.org/kurtpattyn/kimmy.svg
-[david-url]: https://david-dm.org/kurtpattyn/kimmy
-[david-dev-image]: https://david-dm.org/kurtpattyn/kimmy/dev-status.svg
-[david-dev-url]: https://david-dm.org/kurtpattyn/kimmy#info=devDependencies
+[npm-image]: https://badge.fury.io/js/kimbu.svg
+[npm-url]: https://www.npmjs.com/package/kimbu
+[npm-downloads-image]: https://img.shields.io/npm/dm/kimbu.svg?style=flat
+[npm-downloads-url]: https://www.npmjs.org/package/kimbu
+[coveralls-image]: https://coveralls.io/repos/KurtPattyn/kimbu/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/KurtPattyn/kimbu?branch=master
+[travis-image]: https://travis-ci.org/KurtPattyn/kimbu.svg?branch=master
+[travis-url]: https://travis-ci.org/KurtPattyn/kimbu
+[codeclimate-image]: https://codeclimate.com/github/KurtPattyn/kimbu/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/KurtPattyn/kimbu
+[david-image]: https://david-dm.org/kurtpattyn/kimbu.svg
+[david-url]: https://david-dm.org/kurtpattyn/kimbu
+[david-dev-image]: https://david-dm.org/kurtpattyn/kimbu/dev-status.svg
+[david-dev-url]: https://david-dm.org/kurtpattyn/kimbu#info=devDependencies
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
-[waffle-image]: https://badge.waffle.io/KurtPattyn/kimmy.svg?label=ready&title=Ready
-[waffle-url]: http://waffle.io/KurtPattyn/kimmy
+[waffle-image]: https://badge.waffle.io/KurtPattyn/kimbu.svg?label=ready&title=Ready
+[waffle-url]: http://waffle.io/KurtPattyn/kimbu
