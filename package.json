@@ -4,7 +4,8 @@
   "description": "Message bus providing pub/sub and req/res style of messaging over pluggable transports.",
   "main": "./index.js",
   "dependencies": {
-    "amqplib": "^0.4.0"
+    "amqplib": "^0.4.0",
+    "konsol": "^0.1.1"
   },
   "devDependencies": {
     "istanbul": "^0.3.19",
