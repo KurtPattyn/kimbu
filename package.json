@@ -1,6 +1,6 @@
 {
   "name": "kimbu",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Message bus providing pub/sub and req/res style of messaging over pluggable transports.",
   "main": "./index.js",
   "dependencies": {
