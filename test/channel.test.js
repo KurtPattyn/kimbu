@@ -127,6 +127,32 @@ describe("Channel", function() {
       });
     });
 
+    describe(".stop", function() {
+      it("should stop successfully when not connected", function (done) {
+        var rmq = new RabbitMQTransport();
+        var recipientName = "consumer";
+        var distributorName = "testChannel";
+        var channel = new ConsumeChannel(recipientName, distributorName, rmq);
+
+        channel.stop(function(err) {
+          assert(util.isNullOrUndefined(err));
+          done();
+        });
+      });
+
+      it("should cancel consumation successfully when not connected", function (done) {
+        var rmq = new RabbitMQTransport();
+        var recipientName = "consumer";
+        var distributorName = "testChannel";
+        var channel = new ConsumeChannel(recipientName, distributorName, rmq);
+
+        channel._consumeQueue.cancelConsume(function(err) {
+          assert(util.isNullOrUndefined(err));
+          done();
+        });
+      });
+    });
+
     describe(".on", function() {
       var channel = null;
       var rmq = null;
