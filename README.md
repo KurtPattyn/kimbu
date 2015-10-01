@@ -39,6 +39,10 @@ $ npm install kimbu --production
 ```
 for a production only installation (no tests, documentation, ...).
 
+## Supported Node Versions
+`Kimbu` supports `Node` versions 0.12 and later.  
+ To use `Kimbu` with `Node` versions < 4.0, you must start `node` with the `--harmony` flag.
+
 ## Usage
 ``` js
   var Client = require("kimbu").Client;
