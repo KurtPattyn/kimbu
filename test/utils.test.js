@@ -103,20 +103,25 @@ describe("utils", function() {
   });
 
   describe(".findModulesSync", function() {
-    it("should find exactly one EventEmitter module", function (done) {
+    it("should find exactly two EventEmitter modules", function (done) {
       var EventEmitter = require("events").EventEmitter;
       var path = require("path");
       var modulePath = path.join(path.dirname(module.filename), "./testmodules");
       var modules = utils.findModulesSync(modulePath, EventEmitter);
 
-      assert.equal(Object.getOwnPropertyNames(modules).length, 1);
+      assert.equal(Object.getOwnPropertyNames(modules).length, 2);
       assert.ok(modules.hasOwnProperty("TestModule"));
+      assert.ok(modules.hasOwnProperty("TestModule2"));
       var testModule = new modules.TestModule();
+      var testModule2 = new modules.TestModule2();
 
       var TestModule = require("./testmodules/testmodule");
+      var TestModule2 = require("./testmodules/testmodule2");
 
       assert.ok(!util.isNullOrUndefined(testModule));
+      assert.ok(!util.isNullOrUndefined(testModule2));
       assert.ok(testModule instanceof TestModule);
+      assert.ok(testModule2 instanceof TestModule2);
       done();
     });
 
@@ -146,21 +151,26 @@ describe("utils", function() {
   });
 
   describe(".findModules", function() {
-    it("should asynchronously find exactly one EventEmitter module", function (done) {
+    it("should asynchronously find exactly two EventEmitter modules", function (done) {
       var EventEmitter = require("events").EventEmitter;
       var path = require("path");
       var modulePath = path.join(path.dirname(module.filename), "./testmodules");
       var count = 0;
 
       utils.findModules(modulePath, EventEmitter, function(modules) {
-        assert.equal(Object.getOwnPropertyNames(modules).length, 1);
+        assert.equal(Object.getOwnPropertyNames(modules).length, 2);
         assert.ok(modules.hasOwnProperty("TestModule"));
+        assert.ok(modules.hasOwnProperty("TestModule2"));
         var testModule = new modules.TestModule();
+        var testModule2 = new modules.TestModule2();
 
         var TestModule = require("./testmodules/testmodule");
+        var TestModule2 = require("./testmodules/testmodule2");
 
         assert.ok(!util.isNullOrUndefined(testModule));
+        assert.ok(!util.isNullOrUndefined(testModule2));
         assert.ok(testModule instanceof TestModule);
+        assert.ok(testModule2 instanceof TestModule2);
 
         //check that ++count was called before this callback
         assert.equal(count, 1);
