@@ -34,7 +34,14 @@ describe("RabbitMQTransport", function() {
       var rmq = new RabbitMQTransport(defaultRabbitMQOptions);
 
       assert.ok(!rmq.isConnected());
-      assert.strictEqual(JSON.stringify(defaultRabbitMQOptions), JSON.stringify(rmq.options()));
+      const propertyNames = Object.getOwnPropertyNames(defaultRabbitMQOptions);
+      const options = rmq.options();
+      assert.equal(propertyNames.length,
+                   Object.getOwnPropertyNames(options).length);
+      propertyNames.forEach(function(prop) {
+        assert(prop in options);
+        assert.equal(defaultRabbitMQOptions[prop], options[prop]);
+      });
       done();
     });
 
