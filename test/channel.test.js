@@ -367,8 +367,8 @@ describe("Channel", function() {
           rmq.dispatchChannel(distributorName, function(err, channel) {
             assert(util.isNullOrUndefined(err));
             dispatchChannel = channel;
-            dispatchChannel.purge(function(err) {
-              dispatchChannel.start(function (err) {
+            dispatchChannel.purge(function(/* err */) {
+              dispatchChannel.start(function (/* err */) {
                 assert(util.isNullOrUndefined(err));
                 done();
               });
@@ -378,7 +378,7 @@ describe("Channel", function() {
       });
 
       afterEach(function(done) {
-        dispatchChannel.purge(function(err) {
+        dispatchChannel.purge(function(/* err */) {
           rmq.disconnect();
           done();
         });
@@ -454,7 +454,7 @@ describe("Channel", function() {
           rmq.dispatchChannel(distributorName, function(err, channel) {
             assert(util.isNullOrUndefined(err));
             dispatchChannel = channel;
-            dispatchChannel.purge(function(err) {
+            dispatchChannel.purge(function(/* err */) {
               dispatchChannel.start(function (err) {
                 assert(util.isNullOrUndefined(err));
                 done();
@@ -465,7 +465,7 @@ describe("Channel", function() {
       });
 
       after(function(done) {
-        dispatchChannel.purge(function(err) {
+        dispatchChannel.purge(function(/* err */) {
           rmq.disconnect();
           done();
         });
@@ -558,8 +558,8 @@ describe("Channel", function() {
           rmq.consumeChannel("consumer", distributorName, function(err, channel) {
             assert(util.isNullOrUndefined(err));
             consumeChannel = channel;
-            consumeChannel.purge(function(err) {
-              dispatchChannel.purge(function(err) {
+            consumeChannel.purge(function(/* err */) {
+              dispatchChannel.purge(function(/* err */) {
                 dispatchChannel.start(function (err) {
                   assert(util.isNullOrUndefined(err));
                   consumeChannel.start(function(err) {
@@ -575,8 +575,8 @@ describe("Channel", function() {
     });
 
     afterEach(function(done) {
-      dispatchChannel.purge(function(err) {
-        consumeChannel.purge(function(err) {
+      dispatchChannel.purge(function(/* err */) {
+        consumeChannel.purge(function(/* err */) {
           rmq.disconnect();
           done();
         });
@@ -610,6 +610,7 @@ describe("Channel", function() {
         });
 
         rmq.consumeChannel("consumer2", distributorName, function(err, channel) {
+          assert(util.isNullOrUndefined(err));
           channel.start(function(err) {
             assert(util.isNullOrUndefined(err));
             channel.on(messageName, function(parameters, next) {

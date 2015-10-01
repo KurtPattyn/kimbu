@@ -272,7 +272,7 @@ describe("RabbitMQTransport", function() {
       var rmq = new RabbitMQTransport();
 
       assert.throws(function() {
-        rmq.dispatchChannel("someName", function (err, channel) {
+        rmq.dispatchChannel("someName", function (/* err, channel */) {
         });
       }, /AssertionError/,
       "Should throw an AssertionError");
@@ -286,7 +286,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.dispatchChannel({ a: 1}, function (err, channel) {
+            rmq.dispatchChannel({ a: 1}, function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -302,7 +302,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.dispatchChannel(null, function (err, channel) {
+            rmq.dispatchChannel(null, function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -317,7 +317,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.dispatchChannel("", function (err, channel) {
+            rmq.dispatchChannel("", function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -376,7 +376,7 @@ describe("RabbitMQTransport", function() {
       var rmq = new RabbitMQTransport();
 
       assert.throws(function() {
-          rmq.consumeChannel("someName", "testChannel", function (err, channel) {
+          rmq.consumeChannel("someName", "testChannel", function (/* err, channel */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -390,7 +390,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.consumeChannel({ a: 1}, "testChannel", function (err, channel) {
+            rmq.consumeChannel({ a: 1}, "testChannel", function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -405,7 +405,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.consumeChannel(null, "testChannel", function (err, channel) {
+            rmq.consumeChannel(null, "testChannel", function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -420,7 +420,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.consumeChannel("", "testChannel", function (err, channel) {
+            rmq.consumeChannel("", "testChannel", function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -435,7 +435,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.consumeChannel("consumer", { a: 2 }, function (err, channel) {
+            rmq.consumeChannel("consumer", { a: 2 }, function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -451,7 +451,7 @@ describe("RabbitMQTransport", function() {
       rmq.connect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.consumeChannel("consumer", null, function (err, channel) {
+            rmq.consumeChannel("consumer", null, function (/* err, channel */) {
             });
           }, /AssertionError/,
           "Should throw an AssertionError");
@@ -523,9 +523,9 @@ describe("RabbitMQTransport", function() {
 
     afterEach(function(done) {
       if (rmq.isConnected()) {
-        dispatchChannel.purge(function (err) {
-          consumeChannel.purge(function (err) {
-            rmq.disconnect(function (err) {
+        dispatchChannel.purge(function (/* err */) {
+          consumeChannel.purge(function (/* err */) {
+            rmq.disconnect(function (/* err */) {
               rmq = null;
               consumeChannel = null;
               dispatchChannel = null;
@@ -540,7 +540,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-Message type message", function (done) {
       assert.throws(function() {
-        rmq.publish(distributorName, "some message", "x", function (err) {
+        rmq.publish(distributorName, "some message", "x", function (/* err */) {
         });
       }, /AssertionError/,
       "Should throw an AssertionError");
@@ -572,7 +572,7 @@ describe("RabbitMQTransport", function() {
           assert.strictEqual(msg.name, messageName);
           assert.strictEqual(msg.parameters, messageToSend);
           next();
-          rmq.unbind(recipientName, distributorName, messageName, function(err) {
+          rmq.unbind(recipientName, distributorName, messageName, function(/* err */) {
             done();
           });
         }, function(err) {
@@ -596,7 +596,7 @@ describe("RabbitMQTransport", function() {
           assert.strictEqual(msg.name, "hello.world");
           assert.strictEqual(msg.parameters, messageToSend);
           next();
-          rmq.unbind(recipientName, distributorName, "hello.world", function(err) {
+          rmq.unbind(recipientName, distributorName, "hello.world", function(/* err */) {
             done();
           });
         }, function(err) {
@@ -624,7 +624,7 @@ describe("RabbitMQTransport", function() {
               assert.strictEqual(msg.name, "hello.world.bis");
               assert.strictEqual(msg.parameters, messageToSend);
               ++eventsReceived;
-              rmq.unbind("consumer2", distributorName, "hello.world.bis", function(err) {
+              rmq.unbind("consumer2", distributorName, "hello.world.bis", function(/* err */) {
                 next();
               });
             }, function(err) {
@@ -634,7 +634,7 @@ describe("RabbitMQTransport", function() {
               assert.strictEqual(msg.name, "hello.world.bis");
               assert.strictEqual(msg.parameters, messageToSend);
               ++eventsReceived;
-              rmq.unbind(recipientName, distributorName, "hello.world.bis", function(err) {
+              rmq.unbind(recipientName, distributorName, "hello.world.bis", function(/* err */) {
                 next();
               });
             });
@@ -683,7 +683,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String consume channel name", function (done) {
       assert.throws(function() {
-          rmq.unbind({ a: "someName" }, "testChannel", "hello.world", function (err) {
+          rmq.unbind({ a: "someName" }, "testChannel", "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -693,7 +693,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null consume channel name", function (done) {
       assert.throws(function() {
-          rmq.unbind(null, "testChannel", "hello.world", function (err) {
+          rmq.unbind(null, "testChannel", "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -703,7 +703,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String dispatcher channel name", function (done) {
       assert.throws(function() {
-          rmq.unbind("consumer", { a: "testChannel" }, "hello.world", function (err) {
+          rmq.unbind("consumer", { a: "testChannel" }, "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -713,7 +713,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null dispatcher channel name", function (done) {
       assert.throws(function() {
-          rmq.unbind("consumer", null, "hello.world", function (err) {
+          rmq.unbind("consumer", null, "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -723,7 +723,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String binding key", function (done) {
       assert.throws(function() {
-          rmq.unbind("consumer", "testChannel", { a: "hello.world" }, function (err) {
+          rmq.unbind("consumer", "testChannel", { a: "hello.world" }, function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -733,7 +733,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null binding key", function (done) {
       assert.throws(function() {
-          rmq.unbind("consumer", "testChannel", null, function (err) {
+          rmq.unbind("consumer", "testChannel", null, function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -763,7 +763,7 @@ describe("RabbitMQTransport", function() {
       rmq.disconnect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.unbind("consumer", "testChannel", "hello.world", function(err) {});
+            rmq.unbind("consumer", "testChannel", "hello.world", function(/* err */) {});
           }, /AssertionError/,
           "Should throw an AssertionError");
 
@@ -867,7 +867,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String consume channel name", function (done) {
       assert.throws(function() {
-          rmq.bind({ a: "someName" }, "testChannel", "hello.world", function (err) {
+          rmq.bind({ a: "someName" }, "testChannel", "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -877,7 +877,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null consume channel name", function (done) {
       assert.throws(function() {
-          rmq.bind(null, "testChannel", "hello.world", function (err) {
+          rmq.bind(null, "testChannel", "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -887,7 +887,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String dispatcher channel name", function (done) {
       assert.throws(function() {
-          rmq.bind("consumer", { a: "testChannel" }, "hello.world", function (err) {
+          rmq.bind("consumer", { a: "testChannel" }, "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -897,7 +897,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null dispatcher channel name", function (done) {
       assert.throws(function() {
-          rmq.bind("consumer", null, "hello.world", function (err) {
+          rmq.bind("consumer", null, "hello.world", function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -907,7 +907,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a non-String binding key", function (done) {
       assert.throws(function() {
-          rmq.bind("consumer", "testChannel", { a: "hello.world" }, function (err) {
+          rmq.bind("consumer", "testChannel", { a: "hello.world" }, function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -917,7 +917,7 @@ describe("RabbitMQTransport", function() {
 
     it("should throw an assertion error with a null binding key", function (done) {
       assert.throws(function() {
-          rmq.bind("consumer", "testChannel", null, function (err) {
+          rmq.bind("consumer", "testChannel", null, function (/* err */) {
           });
         }, /AssertionError/,
         "Should throw an AssertionError");
@@ -947,7 +947,7 @@ describe("RabbitMQTransport", function() {
       rmq.disconnect(function(err) {
         assert(util.isNullOrUndefined(err));
         assert.throws(function() {
-            rmq.bind("consumer", "testChannel", "hello.world", function(err) {});
+            rmq.bind("consumer", "testChannel", "hello.world", function(/* err */) {});
           }, /AssertionError/,
           "Should throw an AssertionError");
 
@@ -960,7 +960,7 @@ describe("RabbitMQTransport", function() {
         assert(util.isNullOrUndefined(err));
         rmq.bind("consumer", "testChannel", "hello.world", function(err) {
           assert(util.isNullOrUndefined(err));
-          rmq.unbind("consumer", "testChannel", "hello.world", function(err) {
+          rmq.unbind("consumer", "testChannel", "hello.world", function(/* err */) {
             done();
           });
         });
@@ -979,7 +979,7 @@ describe("RabbitMQTransport", function() {
           assert.strictEqual(msg.parameters, messageToSend);
           ++messagesReceived;
           next();
-          rmq.unbind("consumer", "testChannel", "hello.world", function (err) {
+          rmq.unbind("consumer", "testChannel", "hello.world", function (/* err */) {
           });
         });
         rmq.publish("testChannel", new Message("hello.world", messageToSend),
