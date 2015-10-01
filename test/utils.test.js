@@ -114,6 +114,7 @@ describe("utils", function() {
       var testModule = new modules.TestModule();
 
       var TestModule = require("./testmodules/testmodule");
+
       assert.ok(!util.isNullOrUndefined(testModule));
       assert.ok(testModule instanceof TestModule);
       done();
