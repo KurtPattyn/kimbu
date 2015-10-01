@@ -1,8 +1,8 @@
 "use strict";
 
 var Message = require("../lib/message");
-var ConsumeChannel = require("../lib/channel").ConsumeChannel;
-var DispatchChannel = require("../lib/channel").DispatchChannel;
+var ConsumeChannel = require("../lib/consume_channel");
+var DispatchChannel = require("../lib/dispatch_channel");
 var RabbitMQTransport = require("../lib/transportproviders/rabbitmqtransport.js");
 var assert = require("assert");
 var util = require("util");

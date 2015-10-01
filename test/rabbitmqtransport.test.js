@@ -341,7 +341,7 @@ describe("RabbitMQTransport", function() {
     });
 
     it("should return a valid channel with the given name", function (done) {
-      var DispatchChannel = require("../lib/channel").DispatchChannel;
+      var DispatchChannel = require("../lib/dispatch_channel");
       var rmq = new RabbitMQTransport();
 
       rmq.connect(function(err) {
@@ -475,7 +475,7 @@ describe("RabbitMQTransport", function() {
     });
 
     it("should return a valid channel with the given name", function (done) {
-      var ConsumeChannel = require("../lib/channel").ConsumeChannel;
+      var ConsumeChannel = require("../lib/consume_channel");
       var rmq = new RabbitMQTransport();
 
       rmq.connect(function(err) {
