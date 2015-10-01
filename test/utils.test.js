@@ -129,6 +129,20 @@ describe("utils", function() {
       assert.equal(Object.getOwnPropertyNames(modules).length, 0);
       done();
     });
+
+    it("should return an empty module list with a non-existing directory", function(done) {
+      var EventEmitter = require("events").EventEmitter;
+      var path = require("path");
+      var fs = require("fs");
+      var modulePath = path.join("/somewhereinthemilkyway", "./testmodules");
+
+      assert(!fs.existsSync(modulePath));
+
+      var modules = utils.findModulesSync(modulePath, EventEmitter);
+
+      assert.equal(Object.getOwnPropertyNames(modules).length, 0);
+      done();
+    });
   });
 
   describe(".findModules", function() {
@@ -171,6 +185,20 @@ describe("utils", function() {
       });
 
       ++count;
+    });
+
+    it("should return an empty module list with a non-existing directory", function(done) {
+      var EventEmitter = require("events").EventEmitter;
+      var path = require("path");
+      var fs = require("fs");
+      var modulePath = path.join("/somewhereinthemilkyway", "./testmodules");
+      assert(!fs.existsSync(modulePath));
+
+      utils.findModules(modulePath, EventEmitter, function(modules) {
+        assert.equal(Object.getOwnPropertyNames(modules).length, 0);
+
+        done();
+      });
     });
   });
 
