@@ -20,7 +20,8 @@ describe("RabbitMQTransport", function() {
       heartbeatSeconds: 30,
       user: "guest",
       password: "guest",
-      noDelay: true
+      noDelay: true,
+      prefetchCount: 20
     };
 
     it("should not connect on construction", function (done) {
@@ -36,6 +37,7 @@ describe("RabbitMQTransport", function() {
       assert.ok(!rmq.isConnected());
       const propertyNames = Object.getOwnPropertyNames(defaultRabbitMQOptions);
       const options = rmq.options();
+
       assert.equal(propertyNames.length,
                    Object.getOwnPropertyNames(options).length);
       propertyNames.forEach(function(prop) {
